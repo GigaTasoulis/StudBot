@@ -46,6 +46,6 @@ def get_response(msg):
     if prob.item() > 0.75:
         for intent in intents["intents"]:
             if tag == intent["tag"]:
-                print(f"{bot_name}: {random.choice(intent['responses'])}")
-    else:
-        print(f"{bot_name}: I do not understand...")
+                return print(f"{bot_name}: {random.choice(intent['responses'])}")
+    
+    return "Συγγνώμη δεν καταλαβαίνω . . ."
