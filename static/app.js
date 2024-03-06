@@ -1,9 +1,9 @@
 class Chatbox{
     constructor(){
         this.args = {
-            openButton: document.querySelector('.chatbox_button'),
-            chatbox: document.querySelector('.support'),
-            sendButton: document.querySelector('.chatbox_send_button')
+            openbutton: document.querySelector('.chatbox__button'),
+            chatbox: document.querySelector('.chatbox__support'),
+            sendbutton: document.querySelector('.send__button')
         }
         
         this.state = false;
@@ -12,16 +12,16 @@ class Chatbox{
     }
 
     display() {
-        const {openButton, chatBox, sendButton} = this.args;
+        const {openbutton, chatbox, sendbutton} = this.args;
 
-        openButton.addEventListener('click', () => this.toggleState(chatBox))
+        openbutton.addEventListener('click', () => this.toggleState(chatbox))
 
-        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
+        sendbutton.addEventListener('click', () => this.onSendButton(chatbox))
 
-        const node = chatBox.querySelector('input');
+        const node = chatbox.querySelector('input');
         node.addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
-                this.onSendButton(chatBox)
+                this.onSendButton(chatbox)
             }
         })
     }
@@ -57,7 +57,7 @@ class Chatbox{
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
+            let msg2 = { name: "StudBot", message: r.answer };
             this.messages.push(msg2);
             this.updateChatText(chatbox)
             textField.value = ''
@@ -72,7 +72,7 @@ class Chatbox{
     updateChatText(chatbox) {
         var html = '';
         this.messages.slice().reverse().forEach(function(item, index) {
-            if (item.name === "Sam")
+            if (item.name === "StudBot")
             {
                 html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
             }

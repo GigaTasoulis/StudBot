@@ -34,7 +34,7 @@ def get_response(msg):
     sentence = tokenize(msg)
     X = bag_of_words(sentence, all_words)
     X = X.reshape(1, X.shape[0])
-    X = torch.from_numpy(X)
+    X = torch.from_numpy(X).to(device)
 
     output = model(X)
     _, predicted = torch.max(output, dim=1)
@@ -44,8 +44,8 @@ def get_response(msg):
     prob = probs[0][predicted.item()]
 
     if prob.item() > 0.75:
-        for intent in intents["intents"]:
+        for intent in intents['intents']:
             if tag == intent["tag"]:
-                return print(f"{bot_name}: {random.choice(intent['responses'])}")
+                return random.choice(intent['responses'])
     
     return "Συγγνώμη δεν καταλαβαίνω . . ."

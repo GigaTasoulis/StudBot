@@ -1,10 +1,11 @@
 from flask import Flask,render_template, request, jsonify
-
+from flask_cors import CORS
 
 from chat import get_response
 
 
 app = Flask(__name__)
+
  
 @app.get("/") # Get Request
 def index_get():
