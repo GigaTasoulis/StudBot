@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style.css">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudBot</title>
+    <title>Chatbot</title>
 </head>
 <body>
-    <div class="container">
-        <div class="chatbox">
-            <div class="support">
-                <div class="header">
-                    <div class="studbot_image">
-                        <img src="https://github.com/GigaTasoulis/StudBot/blob/main/icon/icon.png?raw=true" alt="" class="src">
-                    </div>
-                    <div class="chatbox_content">
-                        <h4 class="chat_header">StudBot</h4>
-                        <p class="chat_description">Χαίρεται, το όνομα μου είναι StudBot, πώς μπορώ να βοηθήσω;</p>
-                    </div>
+    
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
                 </div>
-                <div class="chatbox_messages">
-                    <div class=""></div>
-                </div>
-                <div class="chatbox_footer">
-                    <input type="text">
-                    <button class="chatbox_send_button">Send</button>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
                 </div>
             </div>
-        <div class="chatbox_button">
-            <!-- <button><img src="vale_to_file_me_to_icon" ></button> Allakse to edw -->
-        </div>   
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="./images/chatbox-icon.svg" /></button>
         </div>
     </div>
-    
-    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
-    
+</div>
+    <script src="./app.js"></script>
 </body>
 </html>
