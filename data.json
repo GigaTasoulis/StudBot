@@ -3,136 +3,139 @@
         {
             "tag": "greeting",
             "patterns": [
-                "Hello",
-                "Hi",
-                "How is your day",
-                "How's life going?",
-                "Hey",
-                "Is anyone there?"
+                "Χαίρεται",
+                "Καλησπέρα",
+                "Πώς πάει",
+                "Όλα καλά;",
+                "Γεια",
+                "Είναι κανείς εκεί;"
             ],
             "responses": [
-                "Heyy :-)",
-                "Hello, thanks for the visit. What can I do for you?",
-                "Hey there, what can I do for you?",
-                "Hello, what are you looking for?",
-                "Hi, Can you tell me what you're looking for?"
+                "Χαίρεται",
+                "Γεια σας, ευχαριστώ για την επίσκεψη. Τι μπορώ να κάνω για σας;",
+                "Γεια σου, τι μπορώ να κάνω για σένα;",
+                "Γεια σας, τι ψάχνετε;",
+                "Γεια σας, μπορείτε να μου πείτε τι ψάχνετε;"
             ]
         },
         { 
             "tag": "goodbye",
-            "patterns": ["Bye", "Have a nice day", "Goodbye", "See you later", "Thanks for the help"],
+            "patterns": ["Αντίο", "Να έχετε μια καλή μέρα", "Γεια σας", 
+            "Τα λέμε αργότερα", "Ευχαριστώ για τη βοήθεια"],
             "responses": [
-                "See you later, thanks for visiting",
-                "Have a nice day",
-                "Can I help you with something else?",
-                "Thank you and goodbye"
+                "Τα λέμε αργότερα, ευχαριστώ για την επίσκεψη",
+                "Καλή σας μέρα",
+                "Μπορώ να σας βοηθήσω με κάτι άλλο;",
+                "Ευχαριστώ και αντίο"
             ]
         },
         {
             "tag": "university_services",
             "patterns": [
-                "What services does the university website offer?",
-                "Tell me about the university website services",
-                "What can I do on the university website?",
-                "Services on the university site",
-                "How can the university website assist me?"
+                "Ποιες υπηρεσίες προσφέρει ο δικτυακός τόπος του πανεπιστημίου;",
+                "Πείτε μου για τις υπηρεσίες που προσφέρει ο δικτυακός τόπος του πανεπιστημίου",
+                "Τι μπορώ να κάνω στον δικτυακό τόπο του πανεπιστημίου;",
+                "Υπηρεσίες στον ιστότοπο του πανεπιστημίου",
+                "Πώς μπορεί να με βοηθήσει ο δικτυακός τόπος του πανεπιστημίου;"
             ],
             "responses": [
-                "The university website provides a comprehensive range of services, covering different sectors like the Department, Education, Quality, Research, Staff, Announcements, and Computer Labs.",
-                "You can explore various services on the university website, such as information about the Department, Education, Quality, Research, Staff, Announcements, and Computer Labs.",
-                "Navigate through the university website to access specific services related to the Department, Education, Quality, Research, Staff, Announcements, and Computer Labs.",
-                "Discover a wealth of information on the university website, including details about the Department, Education, Quality, Research, Staff, Announcements, and Computer Labs."
+                "Ο δικτυακός τόπος του πανεπιστημίου παρέχει ένα ευρύ φάσμα υπηρεσιών, που καλύπτουν διάφορους τομείς, όπως το Τμήμα, την Εκπαίδευση, την Ποιότητα, την Έρευνα, το Προσωπικό, τις Ανακοινώσεις και τα Εργαστήρια Υπολογιστών",
+                "Μπορείτε να εξερευνήσετε διάφορες υπηρεσίες στην ιστοσελίδα του πανεπιστημίου, όπως πληροφορίες σχετικά με το Τμήμα, την Εκπαίδευση, την Ποιότητα, την Έρευνα, το Προσωπικό, τις Ανακοινώσεις και τα Εργαστήρια Υπολογιστών.",
+                "Πλοηγηθείτε στον δικτυακό τόπο του πανεπιστημίου για να αποκτήσετε πρόσβαση σε συγκεκριμένες υπηρεσίες που αφορούν το Τμήμα, την Εκπαίδευση, την Ποιότητα, την Έρευνα, το Προσωπικό, τις Ανακοινώσεις και τα Εργαστήρια Υπολογιστών.",
+                "Ανακαλύψτε πληθώρα πληροφοριών στην ιστοσελίδα του πανεπιστημίου, συμπεριλαμβανομένων λεπτομερειών σχετικά με το Τμήμα, την Εκπαίδευση, την Ποιότητα, την Έρευνα, το Προσωπικό, τις Ανακοινώσεις και τα Εργαστήρια Υπολογιστών."
             ]
         },
         {
             "tag": "department_info",
             "patterns": [
-                "Tell me about the Department",
-                "Departmental information",
-                "What does the Department offer?",
-                "Details about the Department",
-                "Department structure"
+                "Πες μου για το τμήμα",
+                "Πληροφορίες για το τμήμα",
+                "Τι προσφέρει το Τμήμα;",
+                "Λεπτομέρειες σχετικά με το Τμήμα",
+                "Δομή του Τμήματος"
             ],
             "responses": [
-                "The Department segment covers information about greetings, history, structure and organs, secretariat, internal regulations, departmental committees, health and safety, departmental events, AI Hub, alumni, international advisory committee, and daily arrangements.",
-                "Explore the Department section for details on greetings, history, structure and organs, secretariat, internal regulations, departmental committees, health and safety, departmental events, AI Hub, alumni, international advisory committee, and daily arrangements.",
-                "Discover insights into the Department, including greetings, history, structure and organs, secretariat, internal regulations, departmental committees, health and safety, departmental events, AI Hub, alumni, international advisory committee, and daily arrangements."
+                "Το τμήμα του Τμήματος καλύπτει πληροφορίες σχετικά με τους χαιρετισμούς, την ιστορία, τη δομή και τα όργανα, τη γραμματεία, τους εσωτερικούς κανονισμούς, τις επιτροπές του Τμήματος, την υγεία και την ασφάλεια, τις εκδηλώσεις του Τμήματος, τον κόμβο AI, τους αποφοίτους, τη διεθνή συμβουλευτική επιτροπή και τις καθημερινές ρυθμίσεις.",
+                "Εξερευνήστε το τμήμα Τμήμα για πληροφορίες σχετικά με τους χαιρετισμούς, την ιστορία, τη δομή και τα όργανα, τη γραμματεία, τους εσωτερικούς κανονισμούς, τις επιτροπές του τμήματος, την υγεία και την ασφάλεια, τις εκδηλώσεις του τμήματος, το AI Hub, τους αποφοίτους, τη διεθνή συμβουλευτική επιτροπή και τις καθημερινές ρυθμίσεις.",
+                "Ανακαλύψτε πληροφορίες σχετικά με το Τμήμα, όπως χαιρετισμούς, ιστορία, δομή και όργανα, γραμματεία, εσωτερικούς κανονισμούς, επιτροπές τμήματος, υγεία και ασφάλεια, εκδηλώσεις τμήματος, AI Hub, αποφοίτους, διεθνή συμβουλευτική επιτροπή και καθημερινές ρυθμίσεις."
             ]
         },
         {
             "tag": "education_info",
             "patterns": [
-                "Tell me about education",
-                "Education at the university",
-                "What does the university offer for education?",
-                "Details about academic programs",
-                "Undergraduate and postgraduate education"
+                "Πες μου για την εκπαίδευση",
+                "Εκπαίδευση στο πανεπιστήμιο",
+                "Τι προσφέρει το πανεπιστήμιο για την εκπαίδευση;",
+                "Λεπτομέρειες σχετικά με τα ακαδημαϊκά προγράμματα",
+                "Προπτυχιακή και μεταπτυχιακή εκπαίδευση"
             ],
             "responses": [
-                "The Education segment provides information on the study guide, undergraduate education, postgraduate education, doctoral studies program, academic calendar, timetable of courses-examinations, advisor professor, and ERASMUS+.",
-                "Explore the Education section for details on the study guide, undergraduate education, postgraduate education, doctoral studies program, academic calendar, timetable of courses-examinations, advisor professor, and ERASMUS+.",
-                "Discover insights into Education, including the study guide, undergraduate education, postgraduate education, doctoral studies program, academic calendar, timetable of courses-examinations, advisor professor, and ERASMUS+."
+                "Το τμήμα 'Εκπαίδευση' παρέχει πληροφορίες σχετικά με τον οδηγό σπουδών, την προπτυχιακή εκπαίδευση, τη μεταπτυχιακή εκπαίδευση, το πρόγραμμα διδακτορικών σπουδών, το ακαδημαϊκό ημερολόγιο, το χρονοδιάγραμμα μαθημάτων-εξετάσεων, τον σύμβουλο καθηγητή και το ERASMUS+",
+                "Εξερευνήστε το τμήμα Εκπαίδευση για πληροφορίες σχετικά με τον οδηγό σπουδών, την προπτυχιακή εκπαίδευση, τη μεταπτυχιακή εκπαίδευση, το πρόγραμμα διδακτορικών σπουδών, το ακαδημαϊκό ημερολόγιο, το χρονοδιάγραμμα μαθημάτων-εξετάσεων, τον σύμβουλο καθηγητή και το ERASMUS+.",
+                "Ανακαλύψτε πληροφορίες για την Εκπαίδευση, όπως τον οδηγό σπουδών, την προπτυχιακή εκπαίδευση, τη μεταπτυχιακή εκπαίδευση, το πρόγραμμα διδακτορικών σπουδών, το ακαδημαϊκό ημερολόγιο, το χρονοδιάγραμμα μαθημάτων-εξετάσεων, τον σύμβουλο καθηγητή και το ERASMUS+."
             ]
         },
         {
             "tag": "quality_info",
             "patterns": [
-                "Tell me about quality",
-                "Quality policies at the university",
-                "What does the university offer for quality assurance?",
-                "Details about quality policies",
-                "Accreditation of programs"
+                "Πες μου για την ποιότητα του Πανεπιστημίου",
+                "Πολιτικές ποιότητας στο πανεπιστήμιο",
+                "Τι προσφέρει το πανεπιστήμιο για τη διασφάλιση της ποιότητας;",
+                "Λεπτομέρειες σχετικά με τις πολιτικές ποιότητας",
+                "Διαπίστευση των προγραμμάτων"
             ],
             "responses": [
-                "The Quality segment covers information on quality policy, targeting, internal departmental evaluations, external departmental evaluations, and accreditation of the undergraduate program of studies.",
-                "Explore the Quality section for details on quality policy, targeting, internal departmental evaluations, external departmental evaluations, and accreditation of the undergraduate program of studies.",
-                "Discover insights into Quality, including quality policy, targeting, internal departmental evaluations, external departmental evaluations, and accreditation of the undergraduate program of studies."
+                "Το τμήμα 'Ποιότητα' καλύπτει πληροφορίες σχετικά με την πολιτική ποιότητας τη στοχοθεσία, τις εσωτερικές αξιολογήσεις των τμημάτων, τις εξωτερικές αξιολογήσεις των τμημάτων και τη διαπίστευση του προπτυχιακού προγράμματος σπουδών.",
+                "Εξερευνήστε το τμήμα Ποιότητα για πληροφορίες σχετικά με την πολιτική ποιότητας, τη στοχοθεσία, τις εσωτερικές αξιολογήσεις τμημάτων, τις εξωτερικές αξιολογήσεις τμημάτων και τη διαπίστευση του προπτυχιακού προγράμματος σπουδών.",
+                "Ανακαλύψτε πληροφορίες σχετικά με την Ποιότητα, όπως η πολιτική ποιότητας, η στόχευση, οι εσωτερικές αξιολογήσεις τμημάτων, οι εξωτερικές αξιολογήσεις τμημάτων και η διαπίστευση του προπτυχιακού προγράμματος σπουδών."
             ]
         },
         {
             "tag": "research_info",
             "patterns": [
-                "Tell me about research",
-                "Research activities at the university",
-                "What does the university offer for research?",
-                "Details about research departments",
-                "Publications and workshops"
+                "Πες που για έρευνες που γίνονται",
+                "Ερευνητικές δραστηριότητες στο πανεπιστήμιο",
+                "Τι προσφέρει το πανεπιστήμιο για την έρευνα;",
+                "Λεπτομέρειες σχετικά με τα ερευνητικά τμήματα",
+                "Δημοσιεύσεις και εργαστήρια"
             ],
             "responses": [
-                "The Research segment provides information on research sectors, workshops, distinctions, doctorates, publications, and various staff categories involved in research activities.",
-                "Explore the Research section for details on research sectors, workshops, distinctions, doctorates, publications, and various staff categories involved in research activities.",
-                "Discover insights into Research, including research sectors, workshops, distinctions, doctorates, publications, and various staff categories involved in research activities."
+                "Το τμήμα Έρευνα παρέχει πληροφορίες σχετικά με τους ερευνητικούς τομείς, τα εργαστήρια, τις διακρίσεις, τα διδακτορικά, τις δημοσιεύσεις και τις διάφορες κατηγορίες προσωπικού που συμμετέχουν σε ερευνητικές δραστηριότητες",
+                "Εξερευνήστε το τμήμα Έρευνα για λεπτομέρειες σχετικά με τους ερευνητικούς τομείς, τα εργαστήρια, τις διακρίσεις, τα διδακτορικά, τις δημοσιεύσεις και τις διάφορες κατηγορίες προσωπικού που εμπλέκονται σε ερευνητικές δραστηριότητες.",
+                "Ανακαλύψτε πληροφορίες για την έρευνα, συμπεριλαμβανομένων των ερευνητικών τομέων, των εργαστηρίων, των διακρίσεων, των διδακτορικών τίτλων, των δημοσιεύσεων και των διαφόρων κατηγοριών προσωπικού που εμπλέκονται σε ερευνητικές δραστηριότητες."
             ]
         },
         {
             "tag": "announcements_info",
             "patterns": [
-                "Tell me about announcements",
-                "University announcements",
-                "What announcements are available?",
-                "Details about urgent announcements",
-                "General announcements at the university"
+                "Πείτε μου για τις ανακοινώσεις",
+                "Ανακοινώσεις του Πανεπιστημίου",
+                "Τι ανακοινώσεις είναι διαθέσιμες",
+                "Λεπτομέρειες σχετικά με επείγουσες ανακοινώσεις",
+                "Γενικές ανακοινώσεις στο πανεπιστήμιο"
             ],
             "responses": [
-                "The Announcements segment covers information on urgent announcements, general announcements, registrations, course declarations, textbooks, announcements for first-year students, undergraduate studies, postgraduate studies, doctoral studies, doctoral dissertation presentations, seminars, conferences, postgraduate scholarships, news, events, and job opportunities for graduates.",
-                "Explore the Announcements section for details on urgent announcements, general announcements, registrations, course declarations, textbooks, announcements for first-year students, undergraduate studies, postgraduate studies, doctoral studies, doctoral dissertation presentations, seminars, conferences, postgraduate scholarships, news, events, and job opportunities for graduates.",
-                "Discover insights into Announcements, including urgent announcements, general announcements, registrations, course declarations, textbooks, announcements for first-year students, undergraduate studies, postgraduate studies, doctoral studies, doctoral dissertation presentations, seminars, conferences, postgraduate scholarships, news, events, and job opportunities for graduates."
+                "Το τμήμα 'Ανακοινώσεις' καλύπτει πληροφορίες σχετικά με επείγουσες ανακοινώσεις, γενικές ανακοινώσεις, εγγραφές, δηλώσεις μαθημάτων, συγγράμματα, ανακοινώσεις για πρωτοετείς φοιτητές, προπτυχιακές σπουδές, μεταπτυχιακές σπουδές, διδακτορικές σπουδές, παρουσιάσεις διδακτορικών διατριβών, σεμινάρια, συνέδρια, υποτροφίες για μεταπτυχιακούς φοιτητές, ειδήσεις, εκδηλώσεις και ευκαιρίες απασχόλησης για πτυχιούχους",
+                "Εξερευνήστε την ενότητα Ανακοινώσεις για λεπτομέρειες σχετικά με επείγουσες ανακοινώσεις, γενικές ανακοινώσεις, εγγραφές, δηλώσεις μαθημάτων, συγγράμματα, ανακοινώσεις για πρωτοετείς φοιτητές, προπτυχιακές σπουδές, μεταπτυχιακές σπουδές, διδακτορικές σπουδές, παρουσιάσεις διδακτορικών διατριβών, σεμινάρια, συνέδρια, μεταπτυχιακές υποτροφίες, ειδήσεις, εκδηλώσεις και ευκαιρίες απασχόλησης για αποφοίτους.",
+                "Ανακαλύψτε πληροφορίες για τις Ανακοινώσεις, όπως επείγουσες ανακοινώσεις, γενικές ανακοινώσεις, εγγραφές, δηλώσεις μαθημάτων, συγγράμματα, ανακοινώσεις για πρωτοετείς φοιτητές, προπτυχιακές σπουδές, μεταπτυχιακές σπουδές, διδακτορικές σπουδές, παρουσιάσεις διδακτορικών διατριβών, σεμινάρια, συνέδρια, μεταπτυχιακές υποτροφίες, ειδήσεις, εκδηλώσεις και ευκαιρίες απασχόλησης για αποφοίτους."
             ]
         },
         {
             "tag": "computer_labs_info",
             "patterns": [
-                "Tell me about computer labs",
-                "Computer labs at the university",
-                "What does the university offer for computer labs?",
-                "Details about computing resources",
-                "Computer lab services"
+                "Πείτε μου για το εργαστήριο",
+                "Εργαστήρια υπολογιστών στο πανεπιστήμιο",
+                "Τι προσφέρει το πανεπιστήμιο για εργαστήρια υπολογιστών;",
+                "Λεπτομέρειες σχετικά με τους υπολογιστικούς πόρους",
+                "Υπηρεσίες εργαστηρίων υπολογιστών"
             ],
             "responses": [
-                "The Computer Labs segment provides information on space, personnel, computing resources, services, directions, room schedule, operating regulations, and how to send requests related to computer labs.",
-                "Explore the Computer Labs section for details on space, personnel, computing resources, services, directions, room schedule, operating regulations, and how to send requests related to computer labs.",
-                "Discover insights into Computer Labs, including space, personnel, computing resources, services, directions, room schedule, operating regulations, and how to send requests related to computer labs."
+                "Το τμήμα 'Εργαστήρια υπολογιστών' παρέχει πληροφορίες σχετικά με το χώρο, το προσωπικό, τους υπολογιστικούς πόρους, τις υπηρεσίες, τις οδηγίες, το πρόγραμμα των αιθουσών, τους κανονισμούς λειτουργίας και τον τρόπο αποστολής αιτημάτων που σχετίζονται με τα εργαστήρια υπολογιστών.",
+                "Εξερευνήστε το τμήμα Εργαστήρια υπολογιστών για πληροφορίες σχετικά με το χώρο, το προσωπικό, τους υπολογιστικούς πόρους, τις υπηρεσίες, τις κατευθύνσεις, το πρόγραμμα των αιθουσών, τους κανονισμούς λειτουργίας και τον τρόπο αποστολής αιτημάτων που σχετίζονται με τα εργαστήρια υπολογιστών.",
+                "Ανακαλύψτε πληροφορίες σχετικά με τα εργαστήρια υπολογιστών, συμπεριλαμβανομένων των χώρων, του προσωπικού, των υπολογιστικών πόρων, των υπηρεσιών, των κατευθύνσεων, του προγράμματος αιθουσών, των κανονισμών λειτουργίας και του τρόπου αποστολής αιτημάτων που σχετίζονται με τα εργαστήρια υπολογιστών."
             ]
         }
     ]
 }
+
+
