@@ -1,12 +1,13 @@
 import spacy
 import numpy as np
+from unidecode import unidecode
 
 nlp = spacy.load("el_core_news_lg")
 
 def tokenize(sentence):
-    """Tokenize a sentence using Spacy."""
+    """Tokenize a sentence using Spacy and convert to lowercase without accents."""
     doc = nlp(sentence)
-    return [token.text.lower() for token in doc]
+    return [unidecode(token.text).lower() for token in doc]
 
 def stemming(word):
     """Return the root form of a word using Spacy's lemmatization."""
@@ -27,7 +28,7 @@ def bag_of_words(tokenized_sentence, all_words):
     
     return bag
 
-# sentence = ["Γεια", "πως", "είσαι", ";"]
+# sentence = ["γεια", "πως", "εισαι", ";"]
 # words = ["Γεια", "πως", "είσαι", "εσυ", "αντιο", "ευχαριστω", "οκ"]
 # bag = bag_of_words(sentence, words)
 # print(bag)
