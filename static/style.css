@@ -52,6 +52,51 @@ body {
 .chatbox__button {
     text-align: right;
 }
+/* Keep existing CSS styles for buttons and text */
+.role-container {
+    position: absolute;
+    top: 50%; /* Position the container vertically at 50% from the top */
+    left: 50%; /* Position the container horizontally at 50% from the left */
+    transform: translate(-50%, -50%); /* Center the container using transform */
+    text-align: center; /* Center-align the text */
+    z-index: 9999; /* Ensure the container is above other elements */
+}
+
+.role-text {
+    font-size: 20px;
+    margin-bottom: 20px; /* Add some margin between text and buttons */
+}
+
+.role-button {
+    display: block;
+    width: 200px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    margin: 10px auto; /* Center the buttons horizontally */
+    border: none;
+    border-radius: 25px; /* Half of the button height to make it round */
+    background-color: black;
+    color: white;
+    font-size: 18px; /* Adjust font size as needed */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition effect for hover */
+}
+
+/* Hover effect */
+.role-button:hover {
+    background-color: #333; /* Darken the background color on hover */
+}
+
+/* Ensure the footer stays at the bottom of the chatbox window */
+.chatbox__support {
+    position: relative; /* Ensure positioning context */
+    height: 100%; /* Ensure the container fills the height */
+}
+
+.chatbox__footer {
+    position: absolute; /* Position the footer absolutely */
+    bottom: 0; /* Stick it to the bottom */
+    width: 100%; /* Make the footer span the full width */
+}
 
 .send__button {
     padding: 6px;

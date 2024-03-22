@@ -86,7 +86,46 @@ class Chatbox{
         chatmessage.innerHTML = html;
     }
 
+    displayOptions(selectedRole, options) {
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.innerHTML = ''; // Clear previous messages
+        // Display options based on selected role
+        options.forEach(option => {
+            chatboxMessages.innerHTML += `<button class="option-button" data-option="${option}">${option}</button>`;
+        });
+        // Add event listeners for option buttons
+        const optionButtons = document.querySelectorAll('.option-button');
+        optionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedOption = button.dataset.option;
+                // Handle selected option
+                this.handleOptionSelection(selectedOption);
+            });
+        });
+    }
+
+    handleOptionSelection(selectedOption) {
+        // Your code to handle selected option
+        console.log('Selected Option:', selectedOption);
+    }
 }
 
+const roleButtons = document.querySelectorAll('.role-button');
 const chatbox = new Chatbox();
 chatbox.display();
+
+roleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedRole = button.dataset.role;
+        // Example of displaying subsequent options based on selected role
+        if (selectedRole === 'STUDENT') {
+            const studentOptions = ['ΤΟ ΤΜΗΜΑ', 'ΕΚΠΑΙΔΕΥΣΗ', 'ΠΟΙΟΤΗΤΑ', 'ΕΡΕΥΝΑ', 'ΠΡΟΣΩΠΙΚΟ', 'ΑΝΑΚΟΙΝΩΣΕΙΣ'];
+            chatbox.displayOptions(selectedRole, studentOptions);
+        } else if (selectedRole === 'PARENT') {
+            // Display parent options
+            const parentOptions = ['View Reports', 'Contact Teacher']; // Add more parent options if needed
+            chatbox.displayOptions(selectedRole, parentOptions);
+        }
+    });
+});
+
