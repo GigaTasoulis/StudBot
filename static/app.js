@@ -108,7 +108,7 @@ class Chatbox {
             optionButton.addEventListener('click', () => {
                 const selectedOption = optionButton.textContent;
                 // Handle selected option
-                this.previousOptions.push([...options]);
+                this.previousOptions.push(selectedOption);
                 this.handleOptionSelection(selectedOption);
             });
             chatboxMessages.appendChild(optionButton);
@@ -121,14 +121,16 @@ class Chatbox {
     }
 
     goBack() {
-        console.log("went_back");
-        if (this.previousOptions.length > 0) {
-            // Retrieve the previous set of options
-            const previousOptions = this.previousOptions.pop();
-            // Display the previous set of options
-            this.displayOptions(null, previousOptions);
-        }
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.innerHTML = `
+            <div>Τι είστε;</div>
+            <button class="role-button" data-role="STUDENT">ΦΟΙΤΗΤΗΣ</button>
+            <button class="role-button" data-role="PARENT">ΓΟΝΕΑΣ</button>
+        `;
     }
+    
+    
+    
 }
 
 const roleButtons = document.querySelectorAll('.role-button');
