@@ -1,5 +1,5 @@
-class Chatbox{
-    constructor(){
+class Chatbox {
+    constructor() {
         this.args = {
             openbutton: document.querySelector('.chatbox__button'),
             chatbox: document.querySelector('.chatbox__support'),
@@ -8,18 +8,18 @@ class Chatbox{
         
         this.state = false;
         this.messages = [];
-
+        this.previousOptions = []; // Define previousOptions array
     }
 
     display() {
-        const {openbutton, chatbox, sendbutton} = this.args;
+        const { openbutton, chatbox, sendbutton } = this.args;
 
         openbutton.addEventListener('click', () => this.toggleState(chatbox))
 
         sendbutton.addEventListener('click', () => this.onSendButton(chatbox))
 
         const node = chatbox.querySelector('input');
-        node.addEventListener("keyup", ({key}) => {
+        node.addEventListener("keyup", ({ key }) => {
             if (key === "Enter") {
                 this.onSendButton(chatbox)
             }
@@ -30,7 +30,7 @@ class Chatbox{
         this.state = !this.state;
 
         // show or hides the box
-        if(this.state) {
+        if (this.state) {
             chatbox.classList.add('chatbox--active')
         } else {
             chatbox.classList.remove('chatbox--active')
@@ -89,24 +89,45 @@ class Chatbox{
     displayOptions(selectedRole, options) {
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = ''; // Clear previous messages
-        // Display options based on selected role
-        options.forEach(option => {
-            chatboxMessages.innerHTML += `<button class="option-button" data-option="${option}">${option}</button>`;
+    
+        // Add back button if there are previous options
+        const backButton = document.createElement('button');
+        backButton.classList.add('back-button');
+        backButton.textContent = 'Back';
+    
+        backButton.addEventListener('click', () => {
+            this.goBack();
         });
-        // Add event listeners for option buttons
-        const optionButtons = document.querySelectorAll('.option-button');
-        optionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const selectedOption = button.dataset.option;
+    
+        chatboxMessages.appendChild(backButton);
+    
+        options.forEach(option => {
+            const optionButton = document.createElement('button');
+            optionButton.classList.add('option-button');
+            optionButton.textContent = option;
+            optionButton.addEventListener('click', () => {
+                const selectedOption = optionButton.textContent;
                 // Handle selected option
+                this.previousOptions.push([...options]);
                 this.handleOptionSelection(selectedOption);
             });
+            chatboxMessages.appendChild(optionButton);
         });
     }
 
     handleOptionSelection(selectedOption) {
         // Your code to handle selected option
         console.log('Selected Option:', selectedOption);
+    }
+
+    goBack() {
+        console.log("went_back");
+        if (this.previousOptions.length > 0) {
+            // Retrieve the previous set of options
+            const previousOptions = this.previousOptions.pop();
+            // Display the previous set of options
+            this.displayOptions(null, previousOptions);
+        }
     }
 }
 
@@ -119,13 +140,24 @@ roleButtons.forEach(button => {
         const selectedRole = button.dataset.role;
         // Example of displaying subsequent options based on selected role
         if (selectedRole === 'STUDENT') {
-            const studentOptions = ['ΤΟ ΤΜΗΜΑ', 'ΕΚΠΑΙΔΕΥΣΗ', 'ΠΟΙΟΤΗΤΑ', 'ΕΡΕΥΝΑ', 'ΠΡΟΣΩΠΙΚΟ', 'ΑΝΑΚΟΙΝΩΣΕΙΣ'];
+            const studentOptions = [
+                'ΤΟ ΤΜΗΜΑ', 
+                'ΕΚΠΑΙΔΕΥΣΗ', 
+                'ΠΟΙΟΤΗΤΑ', 
+                'ΕΡΕΥΝΑ', 
+                'ΠΡΟΣΩΠΙΚΟ', 
+                'ΑΝΑΚΟΙΝΩΣΕΙΣ'
+            ];
             chatbox.displayOptions(selectedRole, studentOptions);
         } else if (selectedRole === 'PARENT') {
+
             // Display parent options
-            const parentOptions = ['View Reports', 'Contact Teacher']; // Add more parent options if needed
+            const parentOptions = [
+                'ΕΠΙΚΟΙΝΩΝΙΑ ΜΕ ΚΑΘΗΓΗΤΕΣ', 
+                'ΓΙΑ ΤΟ ΤΜΗΜΑ'
+            ]; // Add more parent options if needed
+
             chatbox.displayOptions(selectedRole, parentOptions);
         }
     });
 });
-
