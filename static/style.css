@@ -79,6 +79,10 @@ body {
     font-size: 18px; /* Adjust font size as needed */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Add transition effect for hover */
+    opacity: 0; /* Initially hide the buttons */
+    position: relative;
+    bottom: -20px; /* Initially position them below their default position */
+    transition: opacity 0.5s, bottom 0.5s; /* Apply transition effect */
 }
 
 /* Hover effect */
@@ -243,4 +247,61 @@ body {
     border-bottom-left-radius: 50px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+
+.option-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    opacity: 0; /* Initially hide the options */
+    position: relative;
+    bottom: -20px; /* Initially position them below their default position */
+    transition: opacity 0.5s, bottom 0.5s; /* Apply transition effect */
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.back-button {
+    position: absolute;
+    top: 100px;
+    left: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button img {
+    width: 20px; /* Adjust the width and height of the arrow icon */
+    height: 20px;
+}
+
+.role-button:nth-child(1) {
+    animation: fadeInUp 0.5s ease forwards 0.2s;
+}
+
+.role-button:nth-child(2) {
+    animation: fadeInUp 0.5s ease forwards 0.4s;
+}
+
+.option-button:nth-child(1) {
+    animation: fadeInUp 0.5s ease forwards 0.2s;
+}
+
+.option-button:nth-child(2) {
+    animation: fadeInUp 0.5s ease forwards 0.4s;
+}
+
+/* Define the fadeInUp animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        bottom: -20px;
+    }
+    to {
+        opacity: 1;
+        bottom: 0;
+    }
 }

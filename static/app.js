@@ -8,7 +8,8 @@ class Chatbox {
         
         this.state = false;
         this.messages = [];
-        this.previousOptions = []; // Define previousOptions array
+        this.previousOptions = [];
+        this.roleButtons = []; // Array to store dynamically created role buttons
     }
 
     display() {
@@ -24,12 +25,30 @@ class Chatbox {
                 this.onSendButton(chatbox)
             }
         })
+
+        // Dynamically create and append the STUDENT and PARENT buttons
+        const studentButton = this.createRoleButton("ΦΟΙΤΗΤΗΣ");
+        const parentButton = this.createRoleButton("ΓΟΝΕΑΣ");
+        this.roleButtons.push(studentButton, parentButton);
+        chatbox.querySelector('.chatbox__messages').appendChild(studentButton);
+        chatbox.querySelector('.chatbox__messages').appendChild(parentButton);
+    }
+
+    createRoleButton(role) {
+        const button = document.createElement('button');
+        button.classList.add('role-button');
+        button.dataset.role = role;
+        button.textContent = role;
+        button.addEventListener('click', () => {
+            const selectedRole = button.dataset.role;
+            this.handleRoleSelection(selectedRole);
+        });
+        return button;
     }
 
     toggleState(chatbox) {
         this.state = !this.state;
 
-        // show or hides the box
         if (this.state) {
             chatbox.classList.add('chatbox--active')
         } else {
@@ -72,12 +91,9 @@ class Chatbox {
     updateChatText(chatbox) {
         var html = '';
         this.messages.slice().reverse().forEach(function(item, index) {
-            if (item.name === "StudBot")
-            {
+            if (item.name === "StudBot") {
                 html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
-            }
-            else
-            {
+            } else {
                 html += '<div class="messages__item messages__item--operator">' + item.message + '</div>'
             }
           });
@@ -86,15 +102,33 @@ class Chatbox {
         chatmessage.innerHTML = html;
     }
 
+    handleRoleSelection(selectedRole) {
+        if (selectedRole === 'ΦΟΙΤΗΤΗΣ') {
+            const studentOptions = [
+                'ΤΟ ΤΜΗΜΑ', 
+                'ΕΚΠΑΙΔΕΥΣΗ', 
+                'ΠΟΙΟΤΗΤΑ', 
+                'ΕΡΕΥΝΑ', 
+                'ΠΡΟΣΩΠΙΚΟ', 
+                'ΑΝΑΚΟΙΝΩΣΕΙΣ'
+            ];
+            this.displayOptions(selectedRole, studentOptions);
+        } else if (selectedRole === 'ΓΟΝΕΑΣ') {
+            const parentOptions = [
+                'ΕΠΙΚΟΙΝΩΝΙΑ ΜΕ ΚΑΘΗΓΗΤΕΣ', 
+                'ΓΙΑ ΤΟ ΤΜΗΜΑ'
+            ];
+            this.displayOptions(selectedRole, parentOptions);
+        }
+    }
+
     displayOptions(selectedRole, options) {
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = ''; // Clear previous messages
     
-        // Add back button if there are previous options
         const backButton = document.createElement('button');
         backButton.classList.add('back-button');
-        backButton.textContent = 'Back';
-    
+        backButton.innerHTML = '<img src="static/icon/arrow-icon.png" alt="Back">';
         backButton.addEventListener('click', () => {
             this.goBack();
         });
@@ -107,7 +141,6 @@ class Chatbox {
             optionButton.textContent = option;
             optionButton.addEventListener('click', () => {
                 const selectedOption = optionButton.textContent;
-                // Handle selected option
                 this.previousOptions.push(selectedOption);
                 this.handleOptionSelection(selectedOption);
             });
@@ -116,50 +149,20 @@ class Chatbox {
     }
 
     handleOptionSelection(selectedOption) {
-        // Your code to handle selected option
         console.log('Selected Option:', selectedOption);
     }
 
     goBack() {
         const chatboxMessages = document.querySelector('.chatbox__messages');
-        chatboxMessages.innerHTML = `
-            <div>Τι είστε;</div>
-            <button class="role-button" data-role="STUDENT">ΦΟΙΤΗΤΗΣ</button>
-            <button class="role-button" data-role="PARENT">ΓΟΝΕΑΣ</button>
-        `;
+        chatboxMessages.innerHTML = ``;
+        this.roleButtons.forEach(button => {
+            const role = button.dataset.role;
+            if (role === 'ΦΟΙΤΗΤΗΣ' || role === 'ΓΟΝΕΑΣ') {
+                chatboxMessages.appendChild(button);
+            }
+        });
     }
-    
-    
-    
 }
 
-const roleButtons = document.querySelectorAll('.role-button');
 const chatbox = new Chatbox();
 chatbox.display();
-
-roleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const selectedRole = button.dataset.role;
-        // Example of displaying subsequent options based on selected role
-        if (selectedRole === 'STUDENT') {
-            const studentOptions = [
-                'ΤΟ ΤΜΗΜΑ', 
-                'ΕΚΠΑΙΔΕΥΣΗ', 
-                'ΠΟΙΟΤΗΤΑ', 
-                'ΕΡΕΥΝΑ', 
-                'ΠΡΟΣΩΠΙΚΟ', 
-                'ΑΝΑΚΟΙΝΩΣΕΙΣ'
-            ];
-            chatbox.displayOptions(selectedRole, studentOptions);
-        } else if (selectedRole === 'PARENT') {
-
-            // Display parent options
-            const parentOptions = [
-                'ΕΠΙΚΟΙΝΩΝΙΑ ΜΕ ΚΑΘΗΓΗΤΕΣ', 
-                'ΓΙΑ ΤΟ ΤΜΗΜΑ'
-            ]; // Add more parent options if needed
-
-            chatbox.displayOptions(selectedRole, parentOptions);
-        }
-    });
-});
