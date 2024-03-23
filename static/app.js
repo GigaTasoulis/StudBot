@@ -110,7 +110,8 @@ class Chatbox {
                 'ΠΟΙΟΤΗΤΑ', 
                 'ΕΡΕΥΝΑ', 
                 'ΠΡΟΣΩΠΙΚΟ', 
-                'ΑΝΑΚΟΙΝΩΣΕΙΣ'
+                'ΑΝΑΚΟΙΝΩΣΕΙΣ',
+                'ΠΡΟΓΡΑΜΜΑ ΜΑΘΗΜΑΤΩΝ'
             ];
             this.displayOptions(selectedRole, studentOptions);
         } else if (selectedRole === 'ΓΟΝΕΑΣ') {
@@ -150,6 +151,34 @@ class Chatbox {
 
     handleOptionSelection(selectedOption) {
         console.log('Selected Option:', selectedOption);
+        switch(selectedOption) {
+            case 'ΤΟ ΤΜΗΜΑ':
+                window.location.href = 'https://www.ece.upatras.gr/index.php/el/hm-ty.html';
+                break;
+            case 'ΕΚΠΑΙΔΕΥΣΗ':
+                window.location.href = 'https://www.ece.upatras.gr/index.php/el/mm-education.html';
+                break;
+            case 'ΠΡΟΓΡΑΜΜΑ ΜΑΘΗΜΑΤΩΝ': // TODO fix the fetcing.
+                const pdfUrl = 'https://www.ece.upatras.gr/images/Attachments/%CE%A0%CF%81%CF%8C%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%B1_%CE%9C%CE%B1%CE%B8%CE%B7%CE%BC%CE%AC%CF%84%CF%89%CE%BD-%CE%95%CE%BE%CE%B5%CF%84%CE%AC%CF%83%CE%B5%CF%89%CE%BD/earino202324v1.pdf';
+        fetch(pdfUrl)
+            .then(response => response.blob())
+            .then(blob => {
+                // Create a URL for the PDF blob
+                const pdfUrl = URL.createObjectURL(blob);
+                // Display the PDF link in the chatbox
+                const pdfLink = document.createElement('a');
+                pdfLink.href = pdfUrl;
+                pdfLink.textContent = 'Πρόγραμμα Μαθημάτων';
+                pdfLink.target = '_blank'; // Open in a new tab
+                const chatboxMessages = document.querySelector('.chatbox__messages');
+                chatboxMessages.appendChild(pdfLink);
+            })
+            .catch(error => {
+                console.error('Error fetching PDF:', error);
+            });
+            default:
+                break;
+        }
     }
 
     goBack() {
