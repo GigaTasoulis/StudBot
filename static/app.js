@@ -151,8 +151,7 @@ class Chatbox {
             'ΕΡΕΥΝΑ', 
             'ΠΡΟΣΩΠΙΚΟ', 
             'ΑΝΑΚΟΙΝΩΣΕΙΣ',
-            'ΠΡΟΓΡΑΜΜΑ ΜΑΘΗΜΑΤΩΝ',
-            'ΠΡΟΟΔΟΣ'
+            'ΚΥΠΕΣ'
         ];
         this.displayOptions(null, studentOptions);
     }
@@ -201,6 +200,10 @@ class Chatbox {
                 console.log("Progress option selected.");
                 this.handleProgressOptions();
                 break;
+            case 'ΚΥΠΕΣ':
+                console.log("ΚΥΠΕΣ option selected.");
+                this.handleLabOptions();
+                break;
             default:
                 break;
         }
@@ -208,33 +211,118 @@ class Chatbox {
 
     handleDepartmentOptions() {
         console.log("Handling department options...");
-        // Handle options under 'ΤΟ ΤΜΗΜΑ'
+        const departmentOptions = [
+            'Χαιρετισμοί',
+            'Ιστορία',
+            'Δομή και Όργανα',
+            'Γραμματεία',
+            'Εσωτερικός Κανονισμός του Πανεπιστημίου Πατρών',
+            'Επιτροπές Τμήματος',
+            'Υγεία και Ασφάλεια',
+            'Εκδηλώσεις Τμήματος',
+            'Διαπανεπιστημιακό Κέντρο (Hub) Τεχνητής Νοημοσύνης - Δωρεά Φ. Σωτηρόπουλου',
+            'Απόφοιτοι',
+            'Διεθνής Συμβουλευτική Επιτροπή',
+            'Ημερήσιες Διατάξεις'
+        ];
+        this.displayOptions(null, departmentOptions);
     }
+    
     
     handleEducationOptions() {
         console.log("Handling education options...");
-        // Handle options under 'ΕΚΠΑΙΔΕΥΣΗ'
+        const educationOptions = [
+            'Οδηγός Σπουδών',
+            'Προπτυχιακή Εκπαίδευση',
+            'Μεταπτυχιακή Εκπαίδευση',
+            'Πρόγραμμα Διδακτορικών Σπουδών',
+            'Ακαδημαϊκό Ημερολόγιο',
+            'Ωρολόγιο Πρόγραμμα Μαθημάτων-Εξετάσεων',
+            'Σύμβουλος Καθηγητής',
+            'ΕΡΑΣΜΟΣ+'
+        ];
+        this.displayOptions(null, educationOptions);
     }
     
+    handleLabOptions() {
+        console.log("Handling Lab options...");
+        const LabOptions = [
+            'Χώροι, Προσωπικό, Υπολογιστικοί Πόροι',
+            'Υπηρεσίες',
+            'Οδηγίες',
+            'Πρόγραμμα Αιθουσών',
+            'Κανονισμός Λειτουργίας',
+            'Αποστολή Αιτημάτων',
+        ];
+        this.displayOptions(null, LabOptions);
+    }
+
     handleQualityOptions() {
         console.log("Handling quality options...");
-        // Handle options under 'ΠΟΙΟΤΗΤΑ'
+        const qualityOptions = [
+            'Πολιτική Ποιότητας',
+            'Στοχοθεσία Ποιότητας',
+            'Εσωτερικές Αξιολογήσεις Τμήματος',
+            'Εξωτερικές Αξιολογήσεις Τμήματος',
+            'Πιστοποίηση Προπτυχιακού Προγράμματος Σπουδών'
+        ];
+        this.displayOptions(null, qualityOptions);
     }
+    
     
     handleResearchOptions() {
         console.log("Handling research options...");
-        // Handle options under 'ΕΡΕΥΝΑ'
+        const researchOptions = [
+            'Τομείς',
+            'Εργαστήρια',
+            'Διακρίσεις',
+            'Διδακτορικά - Δημοσιεύσεις',
+            'Πολιτική Ποιότητας',
+            'Στοχοθεσία Ποιότητας',
+            'Εσωτερικές Αξιολογήσεις Τμήματος',
+            'Εξωτερικές Αξιολογήσεις Τμήματος',
+            'Πιστοποίηση Προπτυχιακού Προγράμματος Σπουδών'
+        ];
+        this.displayOptions(null, researchOptions);
     }
+    
     
     handleStaffOptions() {
         console.log("Handling staff options...");
-        // Handle options under 'ΠΡΟΣΩΠΙΚΟ'
+        const staffOptions = [
+            'Μέλη Διδακτικού Ερευνητικού Προσωπικού (ΔΕΠ)',
+            'Μέλη Εργαστηριακού Διδακτικού Προσωπικού (Ε.ΔΙ.Π)',
+            'Μέλη Ειδικού Τεχνικού Εργαστηριακού Προσωπικού (Ε.Τ.Ε.Π.)',
+            'Διοικητικό Προσωπικό',
+            'Ομότιμοι Καθηγητές',
+            'Επίτιμοι Καθηγητές και Διδάκτορες',
+            'Διατελέσαντες Καθηγητές-Διδάσκοντες'
+        ];
+        this.displayOptions(null, staffOptions);
     }
+    
     
     handleAnnouncementsOptions() {
         console.log("Handling announcements options...");
-        // Handle options under 'ΑΝΑΚΟΙΝΩΣΕΙΣ'
+        const announcementsOptions = [
+            'Επείγουσες Ανακοινώσεις',
+            'Γενικές Ανακοινώσεις',
+            'Εγγραφές, Δηλώσεις Μαθημάτων, Συγγράμματα',
+            'Ανακοινώσεις για τους πρωτοετείς φοιτητές',
+            'Προπτυχιακές Σπουδές',
+            'Μεταπτυχιακές Σπουδές',
+            'Διδακτορικές Σπουδές',
+            'Παρουσιάσεις Διδακτορικών, Διπλωματικών',
+            'Σεμινάρια, Συνέδρια, Μεταπτυχιακά, Υποτροφίες',
+            'Ειδήσεις',
+            'Νέα',
+            'Γεγονότα',
+            'Θέσεις Εργασίας για Απόφοιτους Τμήματος',
+            'Προκηρύξεις'
+        ];
+        this.displayOptions(null, announcementsOptions);
     }
+    
     
     handleScheduleOptions() {
         console.log("Handling schedule options...");
