@@ -5,7 +5,7 @@ class Chatbox {
             chatbox: document.querySelector('.chatbox__support'),
             sendbutton: document.querySelector('.send__button')
         }
-        
+
         this.state = false;
         this.messages = [];
     }
@@ -14,9 +14,8 @@ class Chatbox {
         const { openbutton, chatbox, sendbutton } = this.args;
 
         openbutton.addEventListener('click', () => this.toggleState(chatbox))
-
+        
         sendbutton.addEventListener('click', () => this.onSendButton(chatbox))
-
         const node = chatbox.querySelector('input');
         node.addEventListener("keyup", ({ key }) => {
             if (key === "Enter") {
@@ -54,12 +53,17 @@ class Chatbox {
     }
 
     onSendButton(chatbox) {
+
+        if (this.sendingMessage) {
+            return;
+        }
+        this.sendingMessage = true;
         var textField = chatbox.querySelector('input');
         let text1 = textField.value
         if (text1 === "") {
+            this.sendingMessage = false;
             return;
         }
-
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
 
@@ -82,7 +86,10 @@ class Chatbox {
             console.error('Error:', error);
             this.updateChatText(chatbox)
             textField.value = ''
-          });
+          }).finally(() => {
+            // Reset the flag after the message is sent
+            this.sendingMessage = false;
+        });
     }
 
     updateChatText(chatbox) {
