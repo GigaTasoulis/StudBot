@@ -9,8 +9,44 @@ class Chatbox {
         this.previousOptions = [];
         this.state = false;
         this.messages = [];
+
+        this.sessionTimeout = null;
+        this.sessionDuration = 600000; 
+        this.startSessionTimer();
     }
 
+    // SESSIONS
+    startSessionTimer() {
+        this.sessionTimer = setTimeout(() => {
+            this.handleSessionExpired();
+        }, this.sessionDuration);
+    }
+
+    resetSessionTimer() {
+        clearTimeout(this.sessionTimer);
+        this.startSessionTimer();
+    }
+
+    handleSessionExpired() {
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.innerHTML = '<div class="chatbox__message">Your session has expired. Please start over.</div>';
+        const resetButton = document.createElement('button');
+        resetButton.textContent = 'Reset';
+        resetButton.classList.add('reset-button');
+        resetButton.addEventListener('click', () => {
+            this.resetSession();
+        });
+        chatboxMessages.appendChild(resetButton);
+        this.previousOptions = [];
+    }
+
+    resetSession() {
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.innerHTML = ``;
+        this.previousOptions = [];
+        this.display();
+        this.resetSessionTimer(); // Reset session timer after reset
+    }
     display() {
         const { openbutton, chatbox, sendbutton } = this.args;
 
@@ -29,6 +65,7 @@ class Chatbox {
         const parentButton = this.createRoleButton("ΓΟΝΕΑΣ");
         chatbox.querySelector('.chatbox__messages').appendChild(studentButton);
         chatbox.querySelector('.chatbox__messages').appendChild(parentButton);
+        this.previousOptions.push(['ΦΟΙΤΗΤΗΣ','ΓΟΝΕΑΣ']);
     }
 
     createRoleButton(role) {
@@ -110,7 +147,7 @@ class Chatbox {
     displayOptions(selectedOption,options) {
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = ''; // Clear previous messages
-    
+        this.previousOptions.push(options);
         const backButton = document.createElement('button');
         backButton.classList.add('back-button');
         backButton.innerHTML = '<img src="static/icon/arrow-icon.png" alt="Back">';
@@ -133,7 +170,6 @@ class Chatbox {
     }
     //STUDENT OR PARENT
     handleRoleSelection(selectedRole) {
-        this.previousOptions.push({ type: 'role', value: selectedRole });
         // Display the options based on the selected role
         switch(selectedRole) {
             case 'ΦΟΙΤΗΤΗΣ':
@@ -175,7 +211,6 @@ class Chatbox {
     }
 
     handleOptionSelection(selectedOption) {
-        this.previousOptions.push({ type: 'option', value: selectedOption });
         switch(selectedOption) {
             case 'ΤΟ ΤΜΗΜΑ':
                 console.log("Department option selected.");
@@ -618,27 +653,24 @@ class Chatbox {
         this.displayOptions(null, progressOptions);
     }
 
-    goBack() {
-        console.log("Going back...");
+    goBack() {     
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = ``;
-
-        const previousSelection = this.previousOptions.pop(); // Retrieve previous selection
-        if (previousSelection) {
-            this.previousOptions.pop();
-            if (previousSelection.type === 'role') {
-                this.handleRoleSelection(previousSelection.value); // Reprocess role selection
-            } else if (previousSelection.type === 'option') {
-                this.handleOptionSelection(previousSelection.value); // Reprocess option selection
-            }
-        } else {
-            this.display(); // If no previous selection, go back to the beginning
+        const previousSelection = this.previousOptions; // Retrieve previous selection
+        console.log(previousSelection);
+        
+        // Check if previousSelection contains the specific options array
+        if (previousSelection.length === 2) {
+            this.previousOptions = [];
+            this.display(); // If previous selection is empty, go back to the start
+        } else if (previousSelection.length === 3) {
+            this.displayOptions(null, this.previousOptions[1]);
+            
         }
+        this.resetSessionTimer(); // Reset session timer on user interaction
     }
     
     
-    
-        
 }
 
 const chatbox = new Chatbox();
