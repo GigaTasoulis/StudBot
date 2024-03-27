@@ -6,6 +6,7 @@ class Chatbox {
             sendbutton: document.querySelector('.send__button')
         }
 
+        this.previousOptions = [];
         this.state = false;
         this.messages = [];
     }
@@ -132,7 +133,7 @@ class Chatbox {
     }
     //STUDENT OR PARENT
     handleRoleSelection(selectedRole) {
-
+        this.previousOptions.push({ type: 'role', value: selectedRole });
         // Display the options based on the selected role
         switch(selectedRole) {
             case 'ΦΟΙΤΗΤΗΣ':
@@ -174,6 +175,7 @@ class Chatbox {
     }
 
     handleOptionSelection(selectedOption) {
+        this.previousOptions.push({ type: 'option', value: selectedOption });
         switch(selectedOption) {
             case 'ΤΟ ΤΜΗΜΑ':
                 console.log("Department option selected.");
@@ -233,7 +235,56 @@ class Chatbox {
             'Ημερήσιες Διατάξεις'
         ];
         this.displayOptions(null, departmentOptions);
+        
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Χαιρετισμοί':
+                        window.open('https://www.ece.upatras.gr/index.php/el/xairetismoi/perimenontas-tous-neous-foitites.html');
+                        break;
+                    case 'Ιστορία':
+                        window.open('https://www.ece.upatras.gr/index.php/el/istoria.html');
+                        break;
+                    case 'Δομή και Όργανα':
+                        window.open('https://www.ece.upatras.gr/index.php/el/domi-kai-organa.html');
+                        break;
+                    case 'Γραμματεία':
+                        window.open('https://www.ece.upatras.gr/index.php/el/secretariat.html');
+                        break;
+                    case 'Εσωτερικός Κανονισμός του Πανεπιστημίου Πατρών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/esoterikos-kanonismos-tou-panepistimiou-patron.html');
+                        break;
+                    case 'Επιτροπές Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/epitropes.html');
+                        break;
+                    case 'Υγεία και Ασφάλεια':
+                        window.open('https://www.ece.upatras.gr/index.php/el/health-and-safety.html');
+                        break;
+                    case 'Εκδηλώσεις Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/departments-events.html');
+                        break;
+                    case 'Διαπανεπιστημιακό Κέντρο (Hub) Τεχνητής Νοημοσύνης - Δωρεά Φ. Σωτηρόπουλου':
+                        window.open('https://www.ece.upatras.gr/index.php/el/to-diapanepistimiako-kentro-hub-texnitis-noimosynis-dorea-f-sotiropoulou.html');
+                        break;
+                    case 'Απόφοιτοι':
+                        window.open('https://www.ece.upatras.gr/index.php/el/alumni.html');
+                        break;
+                    case 'Διεθνής Συμβουλευτική Επιτροπή':
+                        window.open('https://www.ece.upatras.gr/index.php/el/advisory-board.html');
+                        break;
+                    case 'Ημερήσιες Διατάξεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/hmerisies.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
+    
     
     
     handleEducationOptions() {
@@ -249,7 +300,44 @@ class Chatbox {
             'ΕΡΑΣΜΟΣ+'
         ];
         this.displayOptions(null, educationOptions);
+        
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Οδηγός Σπουδών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/curriculum.html');
+                        break;
+                    case 'Προπτυχιακή Εκπαίδευση':
+                        window.open('https://www.ece.upatras.gr/index.php/el/undergraduate.html');
+                        break;
+                    case 'Μεταπτυχιακή Εκπαίδευση':
+                        window.open('https://www.ece.upatras.gr/index.php/el/programmata-metaptyxiakon-spoudwn.html');
+                        break;
+                    case 'Πρόγραμμα Διδακτορικών Σπουδών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/postgraduate-regulations/postgraduate-regulation');
+                        break;
+                    case 'Ακαδημαϊκό Ημερολόγιο':
+                        window.open('https://www.ece.upatras.gr/index.php/el/academic-calendar.html');
+                        break;
+                    case 'Ωρολόγιο Πρόγραμμα Μαθημάτων-Εξετάσεων':
+                        window.open('https://www.ece.upatras.gr/index.php/el/schedule.html');
+                        break;
+                    case 'Σύμβουλος Καθηγητής':
+                        window.open('https://www.ece.upatras.gr/index.php/el/assistant-professor.html');
+                        break;
+                    case 'ΕΡΑΣΜΟΣ+':
+                        window.open('https://www.ece.upatras.gr/index.php/el/erasmos.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
+    
     
     handleLabOptions() {
         console.log("Handling Lab options...");
@@ -259,10 +347,41 @@ class Chatbox {
             'Οδηγίες',
             'Πρόγραμμα Αιθουσών',
             'Κανονισμός Λειτουργίας',
-            'Αποστολή Αιτημάτων',
+            'Αποστολή Αιτημάτων'
         ];
         this.displayOptions(null, LabOptions);
+        
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Χώροι, Προσωπικό, Υπολογιστικοί Πόροι':
+                        window.open('https://www.ece.upatras.gr/index.php/el/xoroi-prosopiko-ypologistikoi-poroi-kypes.html');
+                        break;
+                    case 'Υπηρεσίες':
+                        window.open('https://www.ece.upatras.gr/index.php/el/ypiresies-kypes.html');
+                        break;
+                    case 'Οδηγίες':
+                        window.open('https://www.ece.upatras.gr/index.php/el/odigies-kypes.html');
+                        break;
+                    case 'Πρόγραμμα Αιθουσών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/programma-aithouson-kypes.html');
+                        break;
+                    case 'Κανονισμός Λειτουργίας':
+                        window.open('https://www.ece.upatras.gr/index.php/el/kanonismos-leitourgias-kypes.html');
+                        break;
+                    case 'Αποστολή Αιτημάτων':
+                        window.open('https://www.ece.upatras.gr/index.php/el/apostoli-aitimaton-kypes.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
+    
 
     handleQualityOptions() {
         console.log("Handling quality options...");
@@ -274,7 +393,35 @@ class Chatbox {
             'Πιστοποίηση Προπτυχιακού Προγράμματος Σπουδών'
         ];
         this.displayOptions(null, qualityOptions);
+        
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Πολιτική Ποιότητας':
+                        window.open('https://www.ece.upatras.gr/index.php/el/quality.html');
+                        break;
+                    case 'Στοχοθεσία Ποιότητας':
+                        window.open('https://www.ece.upatras.gr/index.php/el/objectives.html');
+                        break;
+                    case 'Εσωτερικές Αξιολογήσεις Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/int-evaluation-menu.html');
+                        break;
+                    case 'Εξωτερικές Αξιολογήσεις Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/ext-evaluation-menu.html');
+                        break;
+                    case 'Πιστοποίηση Προπτυχιακού Προγράμματος Σπουδών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/pistopoiisi-proptyxiakoy-programmatos-spoudon.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
+    
     
     
     handleResearchOptions() {
@@ -291,7 +438,47 @@ class Chatbox {
             'Πιστοποίηση Προπτυχιακού Προγράμματος Σπουδών'
         ];
         this.displayOptions(null, researchOptions);
+        
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Τομείς':
+                        window.open('https://www.ece.upatras.gr/index.php/el/divisions.html');
+                        break;
+                    case 'Εργαστήρια':
+                        window.open('https://www.ece.upatras.gr/index.php/el/labs.html');
+                        break;
+                    case 'Διακρίσεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/awards.html');
+                        break;
+                    case 'Διδακτορικά - Δημοσιεύσεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/didaktorika-dimosieyseis.html');
+                        break;
+                    case 'Πολιτική Ποιότητας':
+                        window.open('https://www.ece.upatras.gr/index.php/el/quality.html');
+                        break;
+                    case 'Στοχοθεσία Ποιότητας':
+                        window.open('https://www.ece.upatras.gr/index.php/el/objectives.html');
+                        break;
+                    case 'Εσωτερικές Αξιολογήσεις Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/int-evaluation-menu.html');
+                        break;
+                    case 'Εξωτερικές Αξιολογήσεις Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/ext-evaluation-menu.html');
+                        break;
+                    case 'Πιστοποίηση Προπτυχιακού Προγράμματος Σπουδών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/pistopoiisi-proptyxiakoy-programmatos-spoudon.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
+    
     
     
     handleStaffOptions() {
@@ -306,7 +493,41 @@ class Chatbox {
             'Διατελέσαντες Καθηγητές-Διδάσκοντες'
         ];
         this.displayOptions(null, staffOptions);
+        
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Μέλη Διδακτικού Ερευνητικού Προσωπικού (ΔΕΠ)':
+                        window.open('https://www.ece.upatras.gr/index.php/el/faculty.html');
+                        break;
+                    case 'Μέλη Εργαστηριακού Διδακτικού Προσωπικού (Ε.ΔΙ.Π)':
+                        window.open('https://www.ece.upatras.gr/index.php/el/edip.html');
+                        break;
+                    case 'Μέλη Ειδικού Τεχνικού Εργαστηριακού Προσωπικού (Ε.Τ.Ε.Π.)':
+                        window.open('https://www.ece.upatras.gr/index.php/el/etep.html');
+                        break;
+                    case 'Διοικητικό Προσωπικό':
+                        window.open('https://www.ece.upatras.gr/index.php/el/administrative-staff.html');
+                        break;
+                    case 'Ομότιμοι Καθηγητές':
+                        window.open('https://www.ece.upatras.gr/index.php/el/emeriti.html');
+                        break;
+                    case 'Επίτιμοι Καθηγητές και Διδάκτορες':
+                        window.open('https://www.ece.upatras.gr/index.php/el/honoris-causa.html');
+                        break;
+                    case 'Διατελέσαντες Καθηγητές-Διδάσκοντες':
+                        window.open('https://www.ece.upatras.gr/index.php/el/diatelesantes-kathigites-didaskontes.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
+    
     
     
     handleAnnouncementsOptions() {
@@ -328,6 +549,59 @@ class Chatbox {
             'Προκηρύξεις'
         ];
         this.displayOptions(null, announcementsOptions);
+        const chatboxMessages = document.querySelector('.chatbox__messages');
+        chatboxMessages.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('option-button')) {
+                const selectedOption = target.textContent;
+                switch(selectedOption) {
+                    case 'Επείγουσες Ανακοινώσεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/epeigouses.html');
+                        break;
+                    case 'Γενικές Ανακοινώσεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/general.html');
+                        break;
+                    case 'Εγγραφές, Δηλώσεις Μαθημάτων, Συγγράμματα':
+                        window.open('https://www.ece.upatras.gr/index.php/el/eggrafes-diloseis-mathimaton-syggrammata.html');
+                        break;
+                    case 'Ανακοινώσεις για τους πρωτοετείς φοιτητές':
+                        window.open('https://www.ece.upatras.gr/index.php/el/announces-a-grade.html');
+                        break;
+                    case 'Προπτυχιακές Σπουδές':
+                        window.open('https://www.ece.upatras.gr/index.php/el/proptixiaka-an.html');
+                        break;
+                    case 'Μεταπτυχιακές Σπουδές':
+                        window.open('https://www.ece.upatras.gr/index.php/el/metaptixiaka-an.html');
+                        break;
+                    case 'Διδακτορικές Σπουδές':
+                        window.open('https://www.ece.upatras.gr/index.php/el/didaktoriko-anak.html');
+                        break;
+                    case 'Παρουσιάσεις Διδακτορικών, Διπλωματικών':
+                        window.open('https://www.ece.upatras.gr/index.php/el/parousiaseis-didaktorikon-diplomatikon.html');
+                        break;
+                    case 'Σεμινάρια, Συνέδρια, Μεταπτυχιακά, Υποτροφίες':
+                        window.open('https://www.ece.upatras.gr/index.php/el/ypotrofies.html');
+                        break;
+                    case 'Ειδήσεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/news.html');
+                        break;
+                    case 'Νέα':
+                        window.open('https://www.ece.upatras.gr/index.php/el/a-news.html');
+                        break;
+                    case 'Γεγονότα':
+                        window.open('https://www.ece.upatras.gr/index.php/el/gegonota.html');
+                        break;
+                    case 'Θέσεις Εργασίας για Απόφοιτους Τμήματος':
+                        window.open('https://www.ece.upatras.gr/index.php/el/theseis-ergasias-gia-apofoitous-tmimatos.html');
+                        break;
+                    case 'Προκηρύξεις':
+                        window.open('https://www.ece.upatras.gr/index.php/el/prokirikseis-an.html');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
     
     
@@ -348,8 +622,18 @@ class Chatbox {
         console.log("Going back...");
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = ``;
-        this.display();
-        
+
+        const previousSelection = this.previousOptions.pop(); // Retrieve previous selection
+        if (previousSelection) {
+            this.previousOptions.pop();
+            if (previousSelection.type === 'role') {
+                this.handleRoleSelection(previousSelection.value); // Reprocess role selection
+            } else if (previousSelection.type === 'option') {
+                this.handleOptionSelection(previousSelection.value); // Reprocess option selection
+            }
+        } else {
+            this.display(); // If no previous selection, go back to the beginning
+        }
     }
     
     
