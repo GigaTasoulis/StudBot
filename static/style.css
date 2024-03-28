@@ -57,6 +57,31 @@ body {
     color: black; /* Black text color on hover */
 }
 
+/* CSS for confirmation message */
+.confirmation-message {
+    text-align: center; /* Center align the message and buttons */
+    margin-top: 20px; /* Margin to separate message from previous content */
+}
+
+/* CSS for confirmation buttons */
+.confirm-button, .cancel-button {
+    background-color: black; /* Black button background */
+    color: white; /* White button text color */
+    border: none; /* Remove button border */
+    border-radius: 20px; /* Rounded button corners */
+    padding: 10px 20px; /* Padding for button size */
+    cursor: pointer; /* Show pointer on hover */
+    margin: 0 10px; /* Margin between buttons */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+}
+
+/* Change button style on hover */
+.confirm-button:hover, .cancel-button:hover {
+    background-color: white; /* White background on hover */
+    color: black; /* Black text color on hover */
+}
+
+
 
 .chatbox__header {
     display: flex;

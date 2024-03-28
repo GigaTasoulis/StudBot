@@ -22,13 +22,6 @@ class Chatbox {
         this.startSessionTimer();
     }
 
-    closeChatbox(chatbox) {
-        const confirmationMessage = confirm("Are you sure you want to terminate your session?");
-        if (confirmationMessage) {
-            chatbox.classList.remove('chatbox--active');
-            this.resetSession();
-        }
-    }
 
     // SESSIONS
     startSessionTimer() {
@@ -36,12 +29,10 @@ class Chatbox {
             this.handleSessionExpired();
         }, this.sessionDuration);
     }
-
     resetSessionTimer() {
         clearTimeout(this.sessionTimer);
         this.startSessionTimer();
     }
-
     handleSessionExpired() {
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = '<div class="chatbox__message">Your session has expired. Please start over.</div>';
@@ -78,6 +69,38 @@ class Chatbox {
             this.resetSession();
         });
     }
+    closeChatbox(chatbox) {
+        // Create a confirmation message
+        const confirmationMessage = document.createElement('div');
+        confirmationMessage.classList.add('confirmation-message');
+        confirmationMessage.innerHTML = `
+            <p>Are you sure you want to terminate this session?</p>
+            <button class="confirm-button">Yes</button>
+            <button class="cancel-button">No</button>
+        `;
+        chatbox.querySelector('.chatbox__messages').appendChild(confirmationMessage);
+    
+        // Add event listeners to the buttons
+        const confirmButton = confirmationMessage.querySelector('.confirm-button');
+        const cancelButton = confirmationMessage.querySelector('.cancel-button');
+    
+        confirmButton.addEventListener('click', () => {
+            this.closeSession(chatbox);
+        });
+    
+        cancelButton.addEventListener('click', () => {
+            confirmationMessage.remove(); // Remove the confirmation message
+        });
+    }
+    
+    closeSession(chatbox) {
+        // Close the chatbox and reset the session
+        this.firstTimeOpened = false;
+        this.resetSession();
+        chatbox.classList.remove('chatbox--active');
+        
+    }
+    
 
     display() {
         const { openbutton, chatbox, sendbutton } = this.args;
