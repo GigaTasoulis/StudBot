@@ -74,9 +74,9 @@ class Chatbox {
         const confirmationMessage = document.createElement('div');
         confirmationMessage.classList.add('confirmation-message');
         confirmationMessage.innerHTML = `
-            <p>Are you sure you want to terminate this session?</p>
-            <button class="confirm-button">Yes</button>
-            <button class="cancel-button">No</button>
+            <p>Είστε σίγουροι ότι θέλετε να τερματίσετε αυτή τη συζήτηση;</p>
+            <button class="confirm-button">Ναι</button>
+            <button class="cancel-button">Όχι</button>
         `;
         chatbox.querySelector('.chatbox__messages').appendChild(confirmationMessage);
     
@@ -95,7 +95,7 @@ class Chatbox {
     
     closeSession(chatbox) {
         // Close the chatbox and reset the session
-        this.firstTimeOpened = false;
+        this.firstTimeOpened = true;
         this.resetSession();
         chatbox.classList.remove('chatbox--active');
         

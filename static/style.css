@@ -59,13 +59,20 @@ body {
 
 /* CSS for confirmation message */
 .confirmation-message {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px; /* Rounded button corners */
+    padding: 10px 20px; /* Padding for button size */
     text-align: center; /* Center align the message and buttons */
     margin-top: 20px; /* Margin to separate message from previous content */
+}
+.confirmation-message p {
+    color: white;
+    margin-bottom: 10px;
 }
 
 /* CSS for confirmation buttons */
 .confirm-button, .cancel-button {
-    background-color: black; /* Black button background */
+    background-color: black;
     color: white; /* White button text color */
     border: none; /* Remove button border */
     border-radius: 20px; /* Rounded button corners */
