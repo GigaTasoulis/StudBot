@@ -30,6 +30,34 @@ body {
     margin-top: auto;
 }
 
+/* CSS for welcoming message */
+.welcome-message {
+    background-color: rgba(0, 0, 0, 0.8); /* Light black background */
+    color: white; /* White text color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding for spacing */
+    text-align: center; /* Center align text */
+}
+
+/* CSS for "Νέα Συνομιλία" button */
+.new-conversation-button {
+    background-color: black; /* Black button background */
+    color: white; /* White button text color */
+    border: none; /* Remove button border */
+    border-radius: 20px; /* Rounded button corners */
+    padding: 10px 20px; /* Padding for button size */
+    cursor: pointer; /* Show pointer on hover */
+    margin-top: 20px; /* Margin to separate button from message */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+}
+
+/* Change button style on hover */
+.new-conversation-button:hover {
+    background-color: white; /* White background on hover */
+    color: black; /* Black text color on hover */
+}
+
+
 .chatbox__header {
     display: flex;
     justify-content: space-between;
