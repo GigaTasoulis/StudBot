@@ -65,7 +65,7 @@ class Chatbox {
         const parentButton = this.createRoleButton("ΓΟΝΕΑΣ");
         chatbox.querySelector('.chatbox__messages').appendChild(studentButton);
         chatbox.querySelector('.chatbox__messages').appendChild(parentButton);
-        this.previousOptions.push(['ΦΟΙΤΗΤΗΣ','ΓΟΝΕΑΣ']);
+
     }
 
     createRoleButton(role) {
@@ -657,18 +657,21 @@ class Chatbox {
         const chatboxMessages = document.querySelector('.chatbox__messages');
         chatboxMessages.innerHTML = ``;
         const previousSelection = this.previousOptions; // Retrieve previous selection
-        console.log(previousSelection);
         
         // Check if previousSelection contains the specific options array
-        if (previousSelection.length === 2) {
+        if (previousSelection.length === 1) {
             this.previousOptions = [];
             this.display(); // If previous selection is empty, go back to the start
-        } else if (previousSelection.length === 3) {
-            this.displayOptions(null, this.previousOptions[1]);
-            
+        } else {
+            // Remove the last two items from previousOptions
+            this.previousOptions.pop(); // Remove current selection
+            const previousOptions = this.previousOptions.pop(); // Get previous page of options
+            this.displayOptions(null, previousOptions);
         }
+        
         this.resetSessionTimer(); // Reset session timer on user interaction
     }
+    
     
     
 }
