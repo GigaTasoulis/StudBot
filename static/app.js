@@ -9,10 +9,25 @@ class Chatbox {
         this.previousOptions = [];
         this.state = false;
         this.messages = [];
+        this.firstTimeOpened = true;
+
+        this.minimizeButton = document.querySelector('.minimize-button');
+        this.closeButton = document.querySelector('.close-button');
+
+        this.minimizeButton.addEventListener('click', () => this.toggleState(this.args.chatbox));
+        this.closeButton.addEventListener('click', () => this.closeChatbox(this.args.chatbox));
 
         this.sessionTimeout = null;
         this.sessionDuration = 600000; 
         this.startSessionTimer();
+    }
+
+    closeChatbox(chatbox) {
+        const confirmationMessage = confirm("Are you sure you want to terminate your session?");
+        if (confirmationMessage) {
+            chatbox.classList.remove('chatbox--active');
+            this.resetSession();
+        }
     }
 
     // SESSIONS
@@ -47,25 +62,45 @@ class Chatbox {
         this.display();
         this.resetSessionTimer(); // Reset session timer after reset
     }
+
+    displayWelcomeMessage(chatbox) {
+        const welcomeMessage = document.createElement('div');
+        welcomeMessage.classList.add('welcome-message');
+        welcomeMessage.innerHTML = `
+            <p>Καλώς ήρθες στο Chat του Πανεπιστημίου. Ξεκίνα τη συνομιλία σου και βρες την απάντηση που χρειάζεσαι για κάθε σου ερώτημα.</p>
+            <button class="new-conversation-button">Νέα Συνομιλία</button>
+        `;
+        chatbox.querySelector('.chatbox__messages').appendChild(welcomeMessage);
+
+        // Add event listener to the "Νέα Συνομιλία" button
+        const newConversationButton = welcomeMessage.querySelector('.new-conversation-button');
+        newConversationButton.addEventListener('click', () => {
+            this.resetSession();
+        });
+    }
+
     display() {
         const { openbutton, chatbox, sendbutton } = this.args;
 
         openbutton.addEventListener('click', () => this.toggleState(chatbox))
-        
         sendbutton.addEventListener('click', () => this.onSendButton(chatbox))
+        
         const node = chatbox.querySelector('input');
         node.addEventListener("keyup", ({ key }) => {
             if (key === "Enter") {
                 this.onSendButton(chatbox)
             }
         })
-
-        // Dynamically create and append the STUDENT and PARENT buttons
-        const studentButton = this.createRoleButton("ΦΟΙΤΗΤΗΣ");
-        const parentButton = this.createRoleButton("ΓΟΝΕΑΣ");
-        chatbox.querySelector('.chatbox__messages').appendChild(studentButton);
-        chatbox.querySelector('.chatbox__messages').appendChild(parentButton);
-
+        if (!this.firstTimeOpened) {
+            const studentButton = this.createRoleButton("ΦΟΙΤΗΤΗΣ");
+            const parentButton = this.createRoleButton("ΓΟΝΕΑΣ");
+            chatbox.querySelector('.chatbox__messages').appendChild(studentButton);
+            chatbox.querySelector('.chatbox__messages').appendChild(parentButton);
+        } else {
+            this.displayWelcomeMessage(this.args.chatbox);
+            this.firstTimeOpened = false;
+            
+        }
     }
 
     createRoleButton(role) {
@@ -260,11 +295,11 @@ class Chatbox {
             'Ιστορία',
             'Δομή και Όργανα',
             'Γραμματεία',
-            'Εσωτερικός Κανονισμός του Πανεπιστημίου Πατρών',
-            'Επιτροπές Τμήματος',
+            'Κανονισμός',
+            'Επιτροπές',
             'Υγεία και Ασφάλεια',
             'Εκδηλώσεις Τμήματος',
-            'Διαπανεπιστημιακό Κέντρο (Hub) Τεχνητής Νοημοσύνης - Δωρεά Φ. Σωτηρόπουλου',
+            'Διαπανεπιστημιακό Κέντρο',
             'Απόφοιτοι',
             'Διεθνής Συμβουλευτική Επιτροπή',
             'Ημερήσιες Διατάξεις'

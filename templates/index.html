@@ -18,6 +18,8 @@
                     <h4 class="chatbox__heading--header">StudBot</h4>
                     <p class="chatbox__description--header">Καλησπέρα το όνομα μου είναι StudBot, πώς μπορώ να σε βοηθήσω;</p>
                 </div>
+                <button class="minimize-button">-</button>
+                <button class="close-button">X</button>
             </div>                        
             <div class="chatbox__messages">
                 <!-- Dynamic Conversational Flow (js file)-->
@@ -37,6 +39,6 @@
         $SCRIPT_ROOT = {{ request.script_root|tojson }};
     </script> -->
     <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
-
+    
 </body>
 </html>

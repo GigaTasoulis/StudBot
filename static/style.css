@@ -22,6 +22,35 @@ body {
 
 /* CHATBOX
 =============== */
+/* CSS for arranging buttons into two columns */
+.chatbox__messages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Align items in two columns */
+    margin-top: auto;
+}
+
+.chatbox__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.minimize-button,
+.close-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.close-button {
+    color: red;
+}
+
+/* Adjust styles as needed */
+
 .chatbox {
     position: fixed;
     bottom: 30px;
@@ -119,13 +148,7 @@ body {
     background: orange;
 }
 
-/* MESSAGES */
-.chatbox__messages {
-    margin-top: auto;
-    display: flex;
-    overflow-y: scroll;
-    flex-direction: column-reverse;
-}
+
 
 .messages__item {
     background: orange;
@@ -256,14 +279,16 @@ body {
     color: white;
     border: none;
     border-radius: 25px;
-    padding: 10px 20px;
-    margin: 10px;
     cursor: pointer;
     opacity: 0; /* Initially hide the options */
     position: relative;
     bottom: -20px; /* Initially position them below their default position */
     transition: opacity 0.5s, bottom 0.5s; /* Apply transition effect */
     animation: fadeInUp 0.5s ease forwards;
+    font-size: 12px; /* Adjust font size to make buttons smaller */
+    padding: 5px 10px; /* Adjust padding for smaller buttons */
+    width: calc(50% - 20px); /* Set the width of each button to half of the container width minus some margin */
+    margin: 10px; /* Add some space between buttons */
 }
 
 .back-button {
